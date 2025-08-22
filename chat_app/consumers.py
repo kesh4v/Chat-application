@@ -59,3 +59,6 @@ class PersonalChatConsumer(AsyncWebsocketConsumer):
             self.room_group_name,
             self.channel_name
         )
+
+
+        
