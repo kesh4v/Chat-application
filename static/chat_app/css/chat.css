@@ -1,0 +1,111 @@
+body, html {
+      height: 100%;
+      margin: 0;
+    }
+    .chat-container {
+      height: 100vh;
+      display: flex;
+    }
+    /* Left chat list */
+    .chat-list {
+      width: 20%;
+      border-right: 1px solid #dee2e6;
+      overflow-y: auto;
+      background-color: #f8f9fa;
+    }
+    .chat-list .chat-user {
+      display: flex;
+      align-items: center;
+      padding: 10px 5px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .chat-list .chat-user:hover {
+      background: #e9ecef;
+    }
+    .chat-list .chat-user img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .chat-user-link {
+        text-decoration: none; /* remove underline */
+        color: inherit;        /* keep original text color */
+        display: block;        /* makes entire block clickable */
+    }
+
+    .chat-user-link:hover {
+        background-color: #e9ecef; /* optional hover effect */
+    }
+
+    /* Right message area */
+    .chat-area {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Fixed header */
+    .chat-header {
+      display: block;
+      position: fixed;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #dee2e6;
+      background-color: #fff;
+      flex-shrink: 0;
+    }
+    .chat-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    /* Scrollable messages */
+    .messages {
+      display: flex;           /* Make this a flex container */
+      flex-direction: column; 
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 15px;
+      background-color: #fff;
+    }
+  
+    /* Bubbles */
+    .message {
+      display: block;
+      max-width: 60%;  
+      width: fit-content;        /* prevent extra long messages filling entire row */
+      word-wrap: break-word;
+      padding: 7px;
+      border-radius: 7px;
+      margin-bottom: 3px;
+    }
+    .incoming {
+      background-color: #e9ecef;
+      align-self: flex-start;
+    }
+    .outgoing {
+      background-color: #32a96c;
+      color: rgb(255, 255, 255);
+      align-self: flex-end;
+      float: right;
+    }
+    .timestamp {
+      font-size: 0.65rem;
+      color: rgb(172, 170, 170);
+      margin-top: 2px;
+    }
+
+
+    /* Fixed input */
+    .chat-input {
+      border-top: 1px solid #dee2e6;
+      background-color: #fff;
+      padding: 10px;
+      flex-shrink: 0;
+    }

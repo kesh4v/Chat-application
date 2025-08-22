@@ -1,0 +1,142 @@
+{% extends "layouts/blank.html" %}
+{% load static %}
+{% block content %} 
+
+    <div class="">
+        <div class="chat-container">
+
+            <!-- Chat List -->
+            <div class="chat-list p-2">
+                {% for user in users %}
+                    <a href="{% url "chat" username=user.username %}" class="chat-user-link">
+                    <div class="chat-user mb-2">
+                        <img src="{{ user.userprofile.get_profile_image }}" alt="Bob">
+                        <div>
+                        <strong>{{ user.username }}</strong><br>
+                        <small>See you tomorrow</small>
+                        </div>
+                    </div>
+                    </a>
+                {% endfor %}
+            </div>
+        
+
+            <div class="chat-area">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <img src="{{ chat_user.userprofile.get_profile_image }}" alt="Bob">
+                    <h6 class="mb-0">{{chat_user.username}} <span class="text-success">● Online</span></h6>
+                </div>
+
+
+
+
+
+
+                <!-- Messages -->
+                <div class="messages"  id="message-body">
+                    {% for message in messages %}
+                        {% if request.user.username == message.sender.username %}
+                            <div class="message outgoing">
+                                {{message}}<div class="timestamp">{{message.timestamp}}</div>
+                            </div>
+                        {% else %}
+                            <div class="message incoming">
+                                {{message}}<div class="timestamp">{{message.timestamp}}</div>
+                            </div>
+                        {% endif %}
+                    {% endfor %} 
+                </div>
+
+
+
+
+
+
+                <!-- Input -->
+                <div class="chat-input">
+                    <form class="d-flex" >
+                        <input type="text" id="message-input" class="form-control me-2" placeholder="Type a message...">
+                        <button class="btn btn-primary" type="button" onclick="getInput()">Send</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+  
+
+
+
+
+            
+            {% comment %} <section class="chat-messages" aria-live="polite" aria-relevant="additions" tabindex="0">{{message.message}}</section> {% endcomment %}
+            
+            {% comment %} {% for message in messages %}
+                <!-- Received message -->
+                {% if current_user == sender %}
+                    <div class="message received" id="incoming-msg" role="article" aria-label="Message from Olivia Smith">
+                        {{message.message}}
+                    <time class="message-timestamp" datetime="2024-04-25T15:20:00">15:20</time>
+                    </div>
+                <!-- Sent message -->
+                {% else %}
+                    <div class="message sent" role="article" aria-label="Your message">
+                        {{message.message}}
+                    <time class="message-timestamp" datetime="2024-04-25T15:24:00">15:24</time>
+                    </div>
+                {% endif %}
+                
+            {% endfor %} {% endcomment %}
+
+            {% comment %} for emoji {% endcomment %}
+            {% comment %} <button type="button" class="btn-emoji" aria-label="Add emoji" title="Add emoji" tabindex="0">😊</button> {% endcomment %}
+
+            
+
+
+
+
+
+    
+
+
+    {{ chat_user.id|json_script:"sender_id" }}
+    {{ request.user.username|json_script:"logged_user" }} 
+
+
+
+    <script src="{% static "chat_app/js/script.js" %}"></script>
+  
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- Received message -->
+                {% comment %} <div class="message received" id="incoming-msg" role="article" aria-label="Message from Olivia Smith">
+                    Hi! Just wanted to check if we're still on for tomorrow.
+                <time class="message-timestamp" datetime="2024-04-25T15:20:00">15:20</time>
+                </div>
+
+                <!-- Sent message -->
+                <div class="message sent" role="article" aria-label="Your message">
+                    Perfect! Have a nice day.
+                <time class="message-timestamp" datetime="2024-04-25T15:24:00">15:24</time>
+                </div> {% endcomment %}
