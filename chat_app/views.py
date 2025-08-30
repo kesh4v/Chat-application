@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View   
 from django.contrib.auth.models import User
 from .models import ChatModel
+from chat_users.models import UserProfile
 from django.contrib.auth import get_user_model, get_user
 
 # from django.contrib

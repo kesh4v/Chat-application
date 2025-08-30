@@ -5,7 +5,6 @@
 
     <div class="">
       <div class="chat-container">
-
         <!-- Chat List -->
         <div class="chat-list p-2">
           {% for user in users %}
@@ -13,22 +12,21 @@
               <div class="chat-user mb-2">
                 <img src="{{ user.userprofile.get_profile_image }}" alt="Bob">
                 <div>
-                  <strong>{{ user.username }}</strong><br>
+                  <strong id="{{ user.username }}_status">{{ user.username }}</strong><br>
                   <small>See you tomorrow</small>
                 </div>
               </div>
             </a>
           {% endfor %}
         </div>
-      </div>
+      </div> 
     </div>
 
+    {{ request.user.username|json_script:"logged_user" }} 
+    {{ chat_user.id|json_script:"sender_id" }}
+    
 
+     <script src="{% static "chat_app/js/online_status.js" %}"></script>
 
-
-
-  
-  
-
-
+    
 {% endblock %}
