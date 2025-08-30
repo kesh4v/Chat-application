@@ -8,6 +8,8 @@ class UserProfile(models.Model):
     user_phone_no = models.IntegerField(null=True, blank=True)
     profile_image = models.ImageField(upload_to='profile_img/', null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
+    online_status = models.BooleanField(default=False, null=True, blank=True)
+    last_seen = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
         if self.user.username:
